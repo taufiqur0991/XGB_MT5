@@ -9,18 +9,24 @@ SYMBOLS = {
         "sl_pips": 10,
         "tp_pips": 15,
         "max_spread_sl_pct": 0.3,  # 30% SL
+        "use_fixed_lot": False,
+        "fixed_lot_size": 0.02,
     },
     "GBPUSD": {
         "model": "model/GBPUSD.pkl",
         "sl_pips": 12,
         "tp_pips": 18,
         "max_spread_sl_pct": 0.3,
+        "use_fixed_lot": True,
+        "fixed_lot_size": 0.03,
     },
     "XAUUSD": {
         "model": "model/XAUUSD.pkl",
         "sl_pips": 150,
         "tp_pips": 300,
         "max_spread_sl_pct": 0.25,
+        "use_fixed_lot": True,
+        "fixed_lot_size": 0.01,
     }
 }
 

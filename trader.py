@@ -32,9 +32,17 @@ def process_symbol(symbol, cfg):
     if not spread_ok(symbol, cfg['sl_pips'], cfg['max_spread_sl_pct']):
         print(f"⛔ Spread terlalu besar {symbol}")
         return
-
-    acc = mt5.account_info()
-    lot = calc_lot(acc.balance, cfg['sl_pips'])
+    
+    # Cek apakah di cfg (config) ada parameter 'fixed_lot'
+    if cfg.get('use_fixed_lot', False):
+        lot = cfg['fixed_lot_size']
+    else:
+        acc = mt5.account_info()
+        lot = calc_lot(acc.balance, cfg['sl_pips'])
+    # Pastikan lot tidak 0 sebelum eksekusi
+    if lot <= 0:
+        print(f"⚠️ Lot size tidak valid: {lot}")
+        return    
 
     tick = mt5.symbol_info_tick(symbol)
     pip = PIP_MAP[symbol]
