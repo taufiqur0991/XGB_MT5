@@ -11,8 +11,9 @@ print("🚀 MT5 Trader + Trailing Started")
 while True:
     for symbol, cfg in SYMBOLS.items():
         process_symbol(symbol, cfg)
-
-        if TRAILING['enable']:
-            apply_trailing(symbol, TRAILING)
+        # Ambil config trailing dari cfg simbol tersebut
+        symbol_trailing_cfg = cfg.get('trailing')
+        if symbol_trailing_cfg and cfg.get('use_trailing', False):
+            apply_trailing(symbol, symbol_trailing_cfg)
 
     time.sleep(10)
