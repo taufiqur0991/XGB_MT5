@@ -8,7 +8,7 @@ pip install pandas numpy ta xgboost scikit-learn joblib MetaTrader5
 
 #### 1 Copy Training Model From XGB_Training
 
-copy models to model folder XGB_MT5
+copy models folder from XGB_Training to model folder XGB_MT5
 
 #### 2 Configuration 
 
